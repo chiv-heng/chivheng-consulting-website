@@ -78,6 +78,7 @@ This will generate a `dist/` folder with optimized files to deploy.
 - **Booking:** https://tidycal.com/chivheng/introductory-call
 - **Email:** hello@chivheng.consulting
 - **LinkedIn:** https://www.linkedin.com/in/chivheng
+- **GitHub:** https://github.com/chiv-heng/chivheng-consulting-website.git
 
 ---
 
