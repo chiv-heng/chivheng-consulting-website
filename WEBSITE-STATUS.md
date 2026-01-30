@@ -38,10 +38,7 @@ A single-page website for Chiv Heng Consulting positioned as a **fractional COO/
 
 ### 1. Hosting Setup
 Options to consider:
-- **Netlify** (recommended) — Free tier, easy deployment, custom domain support
-- **Vercel** — Similar to Netlify
-- **GitHub Pages** — Free, requires GitHub repo
-- **Squarespace/Webflow** — If you want a CMS later (would require migration)
+- [x] **Cloudflare Pages** (Current) — Connected to GitHub
 
 ### 2. Domain Configuration
 - You'll need to point `chivheng.consulting` (or your chosen domain) to the hosting provider
@@ -60,7 +57,9 @@ This will generate a `dist/` folder with optimized files to deploy.
 - [x] Replace placeholder testimonials with real quotes (Removed section until data collected)
 - [ ] Verify TidyCal booking link works correctly
 - [x] Test on mobile devices (Mobile Nav implemented)
-- [ ] Add favicon (browser tab icon)
+- [x] Add favicon (browser tab icon)
+- [x] Build production files
+- [x] Deploy to Cloudflare Pages
 - [ ] Set up Google Analytics or simple analytics (optional)
 - [ ] Review meta description for SEO
 - [ ] Test all links (email, LinkedIn, calendar)

@@ -172,9 +172,9 @@ Since domains are already on Cloudflare, could use Cloudflare Pages instead of N
 - [x] Testimonials removed (placeholder)
 - [x] Test on mobile devices
 - [x] Integrate high-res Data Flow Map assets
-- [ ] Build production files
-- [ ] Deploy to hosting
-- [ ] Configure domain
+- [x] Build production files
+- [x] Deploy to hosting
+- [ ] Configure domain (Pending Cloudflare DNS update)
 
 ### Future Enhancements
 - [ ] Collect testimonials via survey (separate project)
