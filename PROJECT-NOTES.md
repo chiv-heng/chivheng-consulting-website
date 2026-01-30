@@ -85,6 +85,7 @@ Not positioned as an AI expert — positioned as a guide who can help non-techni
 - **Booking:** https://tidycal.com/chivheng/introductory-call
 - **Email:** hello@chivheng.consulting
 - **LinkedIn:** https://www.linkedin.com/in/chivheng
+- **GitHub:** https://github.com/chiv-heng/chivheng-consulting-website.git
 - **Domains (Cloudflare):** chivheng.consulting, chivhengconsulting.com
 
 ---
