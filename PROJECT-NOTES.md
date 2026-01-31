@@ -1,6 +1,6 @@
 # Chiv Heng Consulting Website - Project Notes
 
-*Last updated: January 30, 2025*
+*Last updated: January 30, 2026*
 
 ---
 
@@ -23,16 +23,17 @@ Building a website for Chiv Heng Consulting — a fractional COO/CTO practice se
 
 ## Site Structure (Current)
 
-1. **Header** — Logo (144px cropped), nav (How I Work, Focus Areas, About), "Let's Talk" CTA
+1. **Header** — Logo (144px cropped), nav (How I Work, Focus Areas, Resources, About), "Let's Talk" CTA
 2. **Hero** — "From chaos to clarity. Together." + fractional partner positioning
 3. **This might be for you if...** — 4 qualifier cards
 4. **How I Partner** — 3-step approach + philosophy quote
 5. **Where I Can Help** — 3 focus areas (Systems & Data, Team Capacity, AI & Practical Tech)
 6. **What This Looks Like** — Sample work (Systems Data Flow Map) with process explanation
-7. **AI for Nonprofit Leaders** — Featured workshop
-8. **About Chiv** — Bio, experience/education sidebar, unalome story
-9. **CTA** — TidyCal embed + email/LinkedIn
-10. **Footer** — Tagline, contact links
+7. **Resources** — Free tools and guides (PowerSchool RI State Reporting, Job Search Tracker)
+8. **AI for Nonprofit Leaders** — Featured workshop
+9. **About Chiv** — Bio, experience/education sidebar, unalome story
+10. **CTA** — TidyCal embed + email/LinkedIn
+11. **Footer** — Tagline, contact links
 
 ### Removed (for now)
 - Testimonials section — will add back once real quotes are collected via survey
@@ -87,6 +88,29 @@ Not positioned as an AI expert — positioned as a guide who can help non-techni
 - **LinkedIn:** https://www.linkedin.com/in/chivheng
 - **GitHub:** https://github.com/chiv-heng/chivheng-consulting-website.git
 - **Domains (Cloudflare):** chivheng.consulting, chivhengconsulting.com
+
+---
+
+## Resources Section
+
+Free tools and guides shared publicly to demonstrate expertise and build capacity. Links to external resources (not hosted on site).
+
+### Current Resources
+
+1. **PowerSchool RI State Reporting Guide**
+   - Platform: Notion
+   - URL: https://mighty-hoof-255.notion.site/PowerSchool-SIS-RI-State-Reporting-2781c20d2ec880c59afdfa297597b24e
+   - Description: Documentation for Rhode Island schools using PowerSchool SIS. Covers state reporting requirements, common issues, and field-by-field guidance.
+   - Context: Created because PowerSchool's own documentation was insufficient and outdated.
+
+2. **Job Search Tracker**
+   - Platform: Google Sheets
+   - URL: https://ggl.link/JoHo-JobTracker
+   - Version: 1.1 (2025-06-17)
+   - Description: Tool to bring clarity and structure to job search. Tracks applications, networking contacts, with live dashboard.
+   - Collaboration: Created with JohoTalent.com
+   - Tabs: Applications, Networking, Dashboard, Settings
+   - Note: Has optional advanced features via Google Apps Script in menu bar
 
 ---
 
@@ -174,7 +198,10 @@ Since domains are already on Cloudflare, could use Cloudflare Pages instead of N
 - [x] Integrate high-res Data Flow Map assets
 - [x] Build production files
 - [x] Deploy to hosting
-- [ ] Configure domain (Pending Cloudflare DNS update)
+- [x] Configure domain (DNS active on Cloudflare)
+
+### Completed Post-Launch
+- [x] Resources section added with external tools/guides
 
 ### Future Enhancements
 - [ ] Collect testimonials via survey (separate project)
@@ -182,6 +209,7 @@ Since domains are already on Cloudflare, could use Cloudflare Pages instead of N
 - [ ] Additional sample work images
 - [ ] Case studies / project stories
 - [ ] Separate landing page for workshop interest (maybe)
+- [ ] Additional resources as created
 
 ---
 
