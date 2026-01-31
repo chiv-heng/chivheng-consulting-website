@@ -5,16 +5,17 @@
 A single-page website for Chiv Heng Consulting positioned as a **fractional COO/CTO partner** for K-12 schools and nonprofits. The site emphasizes partnership over transactional consulting, with messaging centered on people and mission rather than technology for its own sake.
 
 ### Site Structure
-1. **Header** — Logo (cropped), nav links, "Let's Talk" CTA
+1. **Header** — Logo (cropped), nav links (How I Work, Focus Areas, Resources, About), "Let's Talk" CTA
 2. **Hero** — "From chaos to clarity. Together." + fractional partner positioning
 3. **Who This Is For** — 4 qualifier cards helping visitors self-select
 4. **How I Partner** — 3-step approach (Listen & Learn → Build Together → Transfer & Step Back)
 5. **Where I Can Help** — 3 focus areas (Systems & Data, Team Capacity, AI & Practical Tech)
 6. **What This Looks Like** — Sample work (Systems Data Flow Map) with process description
-7. **AI for Nonprofit Leaders** — Featured workshop section with **Interest Form** (Formspree)
-8. **About Chiv** — Bio, experience sidebar, education, and the unalome story
-9. **CTA** — TidyCal embed for scheduling + email/LinkedIn
-10. **Footer** — Tagline, contact links
+7. **Resources** — Free tools and guides (PowerSchool RI State Reporting, Job Search Tracker)
+8. **AI for Nonprofit Leaders** — Featured workshop section with **Interest Form** (Formspree)
+9. **About Chiv** — Bio, experience sidebar, education, and the unalome story
+10. **CTA** — TidyCal embed for scheduling + email/LinkedIn
+11. **Footer** — Tagline, contact links
 
 ### Design Decisions
 - **Colors:** Navy (#2B4C7E) + Gold (#D4A84B) from logo, warm cream backgrounds
@@ -69,17 +70,23 @@ This will generate a `dist/` folder with optimized files to deploy.
 - Professional headshot when available
 - Additional sample work images
 - Case studies / detailed project stories
-- Blog or resources section
+- ~~Blog or resources section~~ ✓ Resources section added (Jan 2026)
 - Contact form as backup to calendar
+- Additional resources as they are created
 
 ---
 
 ## Current URLs & Links
+- **Live Site:** https://chivheng.consulting
 - **Booking:** https://tidycal.com/chivheng/introductory-call
 - **Email:** hello@chivheng.consulting
 - **LinkedIn:** https://www.linkedin.com/in/chivheng
 - **GitHub:** https://github.com/chiv-heng/chivheng-consulting-website.git
 
+### External Resources (linked from site)
+- **PowerSchool RI State Reporting:** https://mighty-hoof-255.notion.site/PowerSchool-SIS-RI-State-Reporting-2781c20d2ec880c59afdfa297597b24e
+- **Job Search Tracker:** https://ggl.link/JoHo-JobTracker
+
 ---
 
-*Last updated: January 30, 2025*
+*Last updated: January 30, 2026*
