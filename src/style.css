@@ -565,7 +565,7 @@ nav a:hover {
   font-size: 1.25rem;
 }
 
-.resource-card > p {
+.resource-card>p {
   color: var(--color-text-light);
   margin-bottom: 1.5rem;
   flex-grow: 1;
@@ -689,7 +689,23 @@ nav a:hover {
 }
 
 .about-content h2 {
+  margin-bottom: 0;
+}
+
+.about-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+.about-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-gold);
+  box-shadow: var(--shadow-md);
 }
 
 .about-lead {
