@@ -57,7 +57,7 @@ This will generate a `dist/` folder with optimized files to deploy.
 ### 4. Before Launch Checklist
 - [x] Replace placeholder testimonials with real quotes (Removed section until data collected)
 - [ ] Verify TidyCal booking link works correctly
-- [x] Test on mobile devices (Mobile Nav implemented)
+- [x] Test on mobile devices (Mobile Nav implemented & fixed visibility issues)
 - [x] Add favicon (browser tab icon)
 - [x] Build production files
 - [x] Deploy to Cloudflare Pages
