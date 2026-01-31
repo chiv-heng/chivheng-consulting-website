@@ -1036,6 +1036,17 @@ nav a:hover {
   color: var(--color-navy);
   font-weight: 600;
   text-decoration: none;
+  position: relative;
+  /* Ensure it sits on top */
+  z-index: 10;
+}
+
+/* Fix for button inside mobile menu inheriting navy text */
+.mobile-cta-container .btn.mobile-link {
+  color: var(--color-white);
+  padding: 1rem;
+  /* Ensure specific padding wins */
+  width: 100%;
 }
 
 .mobile-cta-container {
