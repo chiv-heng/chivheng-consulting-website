@@ -227,7 +227,23 @@
                 <li><i class="ph ph-map-pin"></i> In-person, Providence area</li>
                 <li><i class="ph ph-hand-heart"></i> Community-focused</li>
               </ul>
-              <a href="#contact" class="btn btn-primary">Express Interest</a>
+              <form action="https://formspree.io/f/xlgnzzye" method="POST" class="workshop-form">
+                <div class="form-group">
+                  <input type="text" name="name" placeholder="Your Name" required class="form-input">
+                </div>
+                <div class="form-group">
+                  <input type="email" name="email" placeholder="Your Email" required class="form-input">
+                </div>
+                <div class="form-group">
+                  <label for="participation-type" class="form-label sr-only">Interest Type</label>
+                  <select name="participation_type" id="participation-type" required class="form-input form-select">
+                    <option value="" disabled selected>How are you interested in participating?</option>
+                    <option value="Individual">As an individual participant</option>
+                    <option value="Team">With my school/nonprofit team</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Express Interest</button>
+              </form>
             </div>
           </div>
         </div>

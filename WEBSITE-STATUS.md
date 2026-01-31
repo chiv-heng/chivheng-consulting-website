@@ -11,7 +11,7 @@ A single-page website for Chiv Heng Consulting positioned as a **fractional COO/
 4. **How I Partner** — 3-step approach (Listen & Learn → Build Together → Transfer & Step Back)
 5. **Where I Can Help** — 3 focus areas (Systems & Data, Team Capacity, AI & Practical Tech)
 6. **What This Looks Like** — Sample work (Systems Data Flow Map) with process description
-7. **AI for Nonprofit Leaders** — Featured workshop section
+7. **AI for Nonprofit Leaders** — Featured workshop section with **Interest Form** (Formspree)
 8. **About Chiv** — Bio, experience sidebar, education, and the unalome story
 9. **CTA** — TidyCal embed for scheduling + email/LinkedIn
 10. **Footer** — Tagline, contact links
@@ -60,6 +60,7 @@ This will generate a `dist/` folder with optimized files to deploy.
 - [x] Add favicon (browser tab icon)
 - [x] Build production files
 - [x] Deploy to Cloudflare Pages
+- [x] Implement Workshop Interest Form (Formspree)
 - [ ] Set up Google Analytics or simple analytics (optional)
 - [ ] Review meta description for SEO
 - [ ] Test all links (email, LinkedIn, calendar)
