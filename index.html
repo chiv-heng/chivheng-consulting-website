@@ -190,9 +190,25 @@
         <div class="container">
           <h2 class="section-title">What This Looks Like</h2>
           <div class="sample-item">
-            <img src="./public/School System Data Flow.png"
-              alt="School Systems Data Flow Map - Example of systems architecture work" width="847" height="800"
-              loading="lazy" decoding="async">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="/School System Data Flow-400w.webp 400w,
+                        /School System Data Flow-600w.webp 600w,
+                        /School System Data Flow-847w.webp 847w"
+                sizes="(max-width: 480px) 400px, (max-width: 768px) 600px, 847px">
+              <source
+                type="image/png"
+                srcset="/School System Data Flow-400w.png 400w,
+                        /School System Data Flow-600w.png 600w,
+                        /School System Data Flow-847w.png 847w"
+                sizes="(max-width: 480px) 400px, (max-width: 768px) 600px, 847px">
+              <img src="/School System Data Flow-847w.png"
+                alt="School Systems Data Flow Map - Example of systems architecture work"
+                width="847" height="800"
+                loading="lazy" decoding="async"
+                fetchpriority="low">
+            </picture>
             <div class="sample-description">
               <p><strong>Example: Systems Data Flow Map</strong></p>
               <p>I create these by sitting down with the team members who use, support, and maintain each system.
