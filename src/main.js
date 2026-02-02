@@ -29,12 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   console.log('Chiv Heng Consulting: Animations initialized');
 
-  // --- Google Analytics Event Tracking ---
+  // --- Cloudflare Zaraz Event Tracking ---
   const trackEvent = (eventName, params = {}) => {
-    if (typeof gtag === 'function') {
-      gtag('event', eventName, params);
+    if (typeof zaraz !== 'undefined' && typeof zaraz.track === 'function') {
+      zaraz.track(eventName, params);
     } else {
-      console.warn('gtag is not defined. Event not tracked:', eventName, params);
+      console.warn('Zaraz is not loaded. Event not tracked:', eventName, params);
     }
   };
 
