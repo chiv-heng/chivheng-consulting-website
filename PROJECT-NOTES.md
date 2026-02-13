@@ -29,14 +29,14 @@ Building a website for Chiv Heng Consulting — a fractional COO/CTO practice se
 4. **How I Partner** — 3-step approach + philosophy quote
 5. **Where I Can Help** — 3 focus areas (Systems & Data, Team Capacity, AI & Practical Tech)
 6. **What This Looks Like** — Sample work (Systems Data Flow Map) with process explanation
-7. **Resources** — Free tools and guides (PowerSchool RI State Reporting, Job Search Tracker)
-8. **AI for Nonprofit Leaders** — Featured workshop
-9. **About Chiv** — Bio, experience/education sidebar, unalome story
-10. **CTA** — TidyCal embed + email/LinkedIn
-11. **Footer** — Tagline, contact links
+7. **What Clients Say** — Testimonials from education leaders
+8. **Resources** — Free tools and guides (PowerSchool RI State Reporting, Job Search Tracker)
+9. **AI for Nonprofit Leaders** — Featured workshop
+10. **About Chiv** — Bio, experience/education sidebar, unalome story
+11. **CTA** — TidyCal embed + email/LinkedIn
+12. **Footer** — Tagline, contact links
 
-### Removed (for now)
-- Testimonials section — will add back once real quotes are collected via survey
+
 
 ---
 
@@ -204,7 +204,8 @@ Since domains are already on Cloudflare, could use Cloudflare Pages instead of N
 - [x] Resources section added with external tools/guides
 
 ### Future Enhancements
-- [ ] Collect testimonials via survey (separate project)
+- [x] Collect testimonials via survey (separate project)
+- [x] Add testimonials to website
 - [ ] Add professional headshot when available
 - [ ] Additional sample work images
 - [ ] Case studies / project stories

@@ -11,11 +11,12 @@ A single-page website for Chiv Heng Consulting positioned as a **fractional COO/
 4. **How I Partner** — 3-step approach (Listen & Learn → Build Together → Transfer & Step Back)
 5. **Where I Can Help** — 3 focus areas (Systems & Data, Team Capacity, AI & Practical Tech)
 6. **What This Looks Like** — Sample work (Systems Data Flow Map) with process description
-7. **Resources** — Free tools and guides (PowerSchool RI State Reporting, Job Search Tracker)
-8. **AI for Nonprofit Leaders** — Featured workshop section with **Interest Form** (Formspree)
-9. **About Chiv** — Bio, experience sidebar, education, and the unalome story
-10. **CTA** — TidyCal embed for scheduling + email/LinkedIn
-11. **Footer** — Tagline, contact links
+7. **What Clients Say** — Testimonials from education leaders
+8. **Resources** — Free tools and guides (PowerSchool RI State Reporting, Job Search Tracker)
+9. **AI for Nonprofit Leaders** — Featured workshop section with **Interest Form** (Formspree)
+10. **About Chiv** — Bio, experience sidebar, education, and the unalome story
+11. **CTA** — TidyCal embed for scheduling + email/LinkedIn
+12. **Footer** — Tagline, contact links
 
 ### Design Decisions
 - **Colors:** Navy (#2B4C7E) + Gold (#D4A84B) from logo, warm cream backgrounds
@@ -55,7 +56,7 @@ This will generate a `dist/` folder with optimized files to deploy.
 **Note:** The node_modules may need reinstallation on a different machine due to platform-specific dependencies.
 
 ### 4. Before Launch Checklist
-- [x] Replace placeholder testimonials with real quotes (Removed section until data collected)
+- [x] Replace placeholder testimonials with real quotes
 - [ ] Verify TidyCal booking link works correctly
 - [x] Test on mobile devices (Mobile Nav implemented & fixed visibility issues)
 - [x] Add favicon (browser tab icon)
