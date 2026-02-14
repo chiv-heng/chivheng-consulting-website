@@ -22,3 +22,18 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Internal project documents (keep local, not public)
+PROJECT-NOTES.md
+WEBSITE-STATUS.md
+TESTIMONIAL-SURVEY.md
+LINKEDIN-ABOUT-DRAFT.md
+formatted-testimonials.md
+testimonials-analysis.md
+
+# Personal files
+Chiv Heng Profile.pdf
+
+# AI/agent directories
+.claude/
+.gemini/
