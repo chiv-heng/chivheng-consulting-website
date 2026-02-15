@@ -273,6 +273,30 @@ nav a:hover {
   flex-wrap: wrap;
 }
 
+.hero-proof {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.hero-proof:hover {
+  color: var(--color-gold-dark);
+}
+
+.hero-proof-quote {
+  font-style: italic;
+  color: var(--color-text-light);
+}
+
+.hero-proof:hover .hero-proof-quote {
+  color: var(--color-gold-dark);
+}
+
 /* Who Section */
 .who-section {
   background: var(--color-white);
