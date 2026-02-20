@@ -243,6 +243,23 @@ nav a:hover {
   background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-white) 100%);
 }
 
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-photo img {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+  scale: 0.85;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
 .hero-eyebrow {
   font-size: 0.875rem;
   font-weight: 600;
@@ -929,12 +946,36 @@ nav a:hover {
     min-height: auto;
   }
 
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-photo {
+    order: -1;
+  }
+
+  .hero-photo img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .hero-actions {
     flex-direction: column;
+    align-items: center;
   }
 
   .hero-actions .btn {
     width: 100%;
+  }
+
+  .hero-proof {
+    justify-content: center;
   }
 
   nav a:not(.btn) {
