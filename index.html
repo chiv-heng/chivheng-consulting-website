@@ -370,7 +370,7 @@
                 <li><i class="ph ph-map-pin"></i> In-person, Rhode Island</li>
                 <li><i class="ph ph-hand-heart"></i> Community-focused</li>
               </ul>
-              <form action="https://formspree.io/f/xlgnzzye" method="POST" class="workshop-form">
+              <form id="workshop-interest-form" class="workshop-form">
                 <div class="form-group">
                   <input type="text" name="name" placeholder="Your Name" required class="form-input">
                 </div>
@@ -389,8 +389,16 @@
                     <option value="Team">With my school/nonprofit team</option>
                   </select>
                 </div>
+                <div class="form-group form-honeypot" aria-hidden="true">
+                  <input type="text" name="website" tabindex="-1" autocomplete="off">
+                </div>
                 <button type="submit" class="btn btn-primary btn-full">Express Interest</button>
               </form>
+              <div id="workshop-form-success" class="form-success-message is-hidden">
+                <i class="ph ph-check-circle"></i>
+                <h3>Thank you for your interest!</h3>
+                <p>I'll be in touch soon with details about the next workshop.</p>
+              </div>
             </div>
           </div>
         </div>

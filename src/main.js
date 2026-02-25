@@ -64,17 +64,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 3. Track Workshop Form Submissions
-  const workshopForm = document.querySelector('.workshop-form');
+  // 3. Workshop Form Submission (Google Sheets)
+  const workshopForm = document.getElementById('workshop-interest-form');
   if (workshopForm) {
-    workshopForm.addEventListener('submit', () => {
-      const org = workshopForm.querySelector('[name="organization"]')?.value;
-      const type = workshopForm.querySelector('[name="participation_type"]')?.value;
+    workshopForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const submitBtn = workshopForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Submitting...';
+      submitBtn.disabled = true;
+
+      // Honeypot spam check — if filled, silently "succeed" without submitting
+      const honeypot = workshopForm.querySelector('[name="website"]').value;
+      if (honeypot) {
+        workshopForm.classList.add('is-hidden');
+        document.getElementById('workshop-form-success').classList.remove('is-hidden');
+        return;
+      }
+
+      const formData = {
+        name: workshopForm.querySelector('[name="name"]').value,
+        email: workshopForm.querySelector('[name="email"]').value,
+        organization: workshopForm.querySelector('[name="organization"]').value,
+        participation_type: workshopForm.querySelector('[name="participation_type"]').value,
+      };
+
+      // Track with Zaraz
       trackEvent('sign_up', {
         method: 'workshop_form',
-        organization: org,
-        participation_type: type
+        organization: formData.organization,
+        participation_type: formData.participation_type
       });
+
+      try {
+        await fetch('https://script.google.com/macros/s/AKfycby7eBONJCHKFYrDa1F67p6l97ip-sytogzAxAkV_MpvvgBbdL78_lBA6mEt6EZJdN-A/exec', {
+          method: 'POST',
+          body: JSON.stringify(formData),
+        });
+
+        workshopForm.classList.add('is-hidden');
+        document.getElementById('workshop-form-success').classList.remove('is-hidden');
+      } catch (error) {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        alert('Something went wrong. Please try again or email hello@chivheng.consulting directly.');
+      }
     });
   }
 
