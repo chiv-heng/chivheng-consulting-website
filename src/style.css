@@ -1236,3 +1236,40 @@ select.form-input {
   width: 100%;
   margin-top: 0.5rem;
 }
+
+/* Form Success State */
+.is-hidden {
+  display: none;
+}
+
+.form-success-message {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.form-success-message i {
+  font-size: 3rem;
+  color: #48BB78;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.form-success-message h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-success-message p {
+  color: var(--color-text-light);
+}
+
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+}
+
+.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
