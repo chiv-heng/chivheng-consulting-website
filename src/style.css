@@ -277,12 +277,26 @@ nav a:hover {
   line-height: 1.15;
 }
 
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(2.25rem, 10vw, 2.75rem);
+    line-height: 1.1;
+  }
+}
+
 .hero-subtitle {
   font-size: 1.25rem;
   color: var(--color-text-light);
   max-width: 600px;
   margin-bottom: 2.5rem;
   line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .hero-subtitle {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .hero-actions {
