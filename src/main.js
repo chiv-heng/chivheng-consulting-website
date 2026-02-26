@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const submitBtn = resourcesForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Unlocking...';
+      submitBtn.textContent = 'Accessing...';
       submitBtn.disabled = true;
 
       // Honeypot check
