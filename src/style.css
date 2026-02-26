@@ -315,6 +315,105 @@ nav a:hover {
   color: var(--color-gold-dark);
 }
 
+/* Trusted By Ticker */
+.trusted-by-section {
+  padding: 3rem 0;
+  border-bottom: 1px solid rgba(43, 76, 126, 0.08);
+  background: var(--color-white);
+  overflow: hidden;
+}
+
+.trusted-eyebrow {
+  text-align: center;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-navy);
+  opacity: 0.6;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.logo-ticker-wrap {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Gradient masks for smooth fade in/out on edges */
+.logo-ticker-wrap::before,
+.logo-ticker-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logo-ticker-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-white), transparent);
+}
+
+.logo-ticker-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-white), transparent);
+}
+
+.logo-ticker {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  width: max-content;
+  animation: scrollTicker 30s linear infinite;
+}
+
+/* Pause on hover for readability */
+.logo-ticker:hover {
+  animation-play-state: paused;
+}
+
+.logo-item {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-navy);
+  opacity: 0.4;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+.logo-item:hover {
+  opacity: 0.8;
+}
+
+@keyframes scrollTicker {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-50% - 2rem));
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-ticker {
+    gap: 3rem;
+  }
+
+  .logo-item {
+    font-size: 1.125rem;
+  }
+
+  .logo-ticker-wrap::before,
+  .logo-ticker-wrap::after {
+    width: 40px;
+  }
+}
+
 /* Who Section */
 .who-section {
   background: var(--color-white);
