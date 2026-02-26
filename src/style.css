@@ -4,9 +4,9 @@
   --color-navy-dark: #1E3A5F;
   --color-navy-light: #3D6498;
 
-  --color-gold: #D4A84B;
-  --color-gold-dark: #B8923D;
-  --color-gold-light: #E4C06A;
+  --color-gold: #B8923D;
+  --color-gold-dark: #9A762D;
+  --color-gold-light: #D4A84B;
 
   --color-cream: #FAF8F5;
   --color-cream-dark: #F0EDE8;
@@ -196,6 +196,7 @@ nav a:hover {
   align-items: center;
   justify-content: center;
   padding: 0.75rem 1.5rem;
+  min-height: 48px;
   border-radius: 0.5rem;
   font-weight: 600;
   font-size: 0.9375rem;
@@ -460,6 +461,8 @@ nav a:hover {
 
 .focus-card>p {
   color: var(--color-text-light);
+  font-size: 0.9375rem;
+  line-height: 1.6;
   margin-bottom: 1.5rem;
 }
 
@@ -1199,6 +1202,7 @@ body.menu-open {
 .form-input {
   width: 100%;
   padding: 0.875rem 1rem;
+  min-height: 48px;
   border: 1px solid rgba(43, 76, 126, 0.2);
   border-radius: var(--radius-sm);
   font-family: var(--font-body);
@@ -1272,4 +1276,75 @@ select.form-input {
   opacity: 0.7;
   cursor: not-allowed;
   transform: none;
+}
+
+/* Sign-up Page */
+.signup-section {
+  padding: 10rem 0 6rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-white) 100%);
+}
+
+.signup-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-lg);
+}
+
+.signup-desc {
+  color: var(--color-text-light);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .signup-section {
+    padding: 8rem 0 4rem;
+    min-height: 0;
+  }
+
+  .signup-card {
+    padding: 2rem;
+  }
+}
+
+.session-notice {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-gold-dark);
+  font-weight: 500;
+}
+
+/* Mobile Sticky CTA */
+.mobile-sticky-cta {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 80px;
+    /* Make room for sticky CTA */
+  }
+
+  .mobile-sticky-cta {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background: rgba(250, 248, 245, 0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(43, 76, 126, 0.06);
+    z-index: 99;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .mobile-sticky-cta .btn {
+    margin-top: 0;
+  }
 }
