@@ -615,6 +615,27 @@ nav a:hover {
   transform: scale(1.1);
 }
 
+.lead-capture-card {
+  background: var(--color-cream);
+  border: 1px solid rgba(43, 76, 126, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
 .resource-card h3 {
   margin-bottom: 0.75rem;
   font-size: 1.25rem;

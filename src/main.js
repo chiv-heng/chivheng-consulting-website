@@ -113,7 +113,54 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Track External Contact Links (LinkedIn)
+  // 4. Resources Lead Magnet Form
+  const resourcesForm = document.getElementById('resources-lead-form');
+  if (resourcesForm) {
+    resourcesForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const submitBtn = resourcesForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Unlocking...';
+      submitBtn.disabled = true;
+
+      // Honeypot check
+      const honeypot = resourcesForm.querySelector('[name="website"]').value;
+      if (honeypot) {
+        document.getElementById('resources-lead-capture').classList.add('is-hidden');
+        document.getElementById('resources-unlocked').classList.remove('is-hidden');
+        return;
+      }
+
+      const formData = {
+        name: resourcesForm.querySelector('[name="name"]').value,
+        email: resourcesForm.querySelector('[name="email"]').value,
+        form_type: resourcesForm.querySelector('[name="form_type"]').value,
+      };
+
+      // Track with Zaraz
+      trackEvent('generate_lead', {
+        method: 'resources_form'
+      });
+
+      try {
+        await fetch('https://script.google.com/macros/s/AKfycby7eBONJCHKFYrDa1F67p6l97ip-sytogzAxAkV_MpvvgBbdL78_lBA6mEt6EZJdN-A/exec', {
+          method: 'POST',
+          body: JSON.stringify(formData),
+        });
+
+        // Hide form, reveal resources
+        document.getElementById('resources-lead-capture').classList.add('is-hidden');
+        document.getElementById('resources-unlocked').classList.remove('is-hidden');
+      } catch (error) {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        alert('Something went wrong. Please try again or email hello@chivheng.consulting directly.');
+      }
+    });
+  }
+
+  // 5. Track External Contact Links (LinkedIn)
   const externalLinks = document.querySelectorAll('a[href*="linkedin.com"], a[href^="mailto:"]');
   externalLinks.forEach(link => {
     link.addEventListener('click', () => {

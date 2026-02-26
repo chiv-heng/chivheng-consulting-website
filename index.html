@@ -310,15 +310,32 @@
         </div>
       </section>
 
-      <!-- Resources Section -->
+      <!-- Resources Section (Lead Magnet) -->
       <section id="resources" class="section resources-section">
         <div class="container">
-          <h2 class="section-title">Resources</h2>
-          <p class="section-intro">I believe in building capacity, not gatekeeping knowledge. These are tools and guides
-            I've created through client work and collaborations. Use them freely — and reach out if you want help
-            implementing them.</p>
+          <h2 class="section-title">Free Systems Toolkits</h2>
+          <p class="section-intro">I believe in building capacity, not gatekeeping knowledge. Enter your email below to
+            instantly unlock access to my three most popular tools and guides.</p>
 
-          <div class="resources-grid">
+          <div id="resources-lead-capture" class="lead-capture-card">
+            <form id="resources-lead-form" class="workshop-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <input type="text" name="name" placeholder="Your Name" required class="form-input">
+                </div>
+                <div class="form-group">
+                  <input type="email" name="email" placeholder="Your Email" required class="form-input">
+                </div>
+              </div>
+              <input type="hidden" name="form_type" value="Downloads">
+              <div class="form-group form-honeypot" aria-hidden="true">
+                <input type="text" name="website" tabindex="-1" autocomplete="off">
+              </div>
+              <button type="submit" class="btn btn-primary btn-full">Unlock Content Now</button>
+            </form>
+          </div>
+
+          <div id="resources-unlocked" class="resources-grid is-hidden">
             <div class="resource-card">
               <div class="resource-icon"><i class="ph ph-graduation-cap"></i></div>
               <h3>College Navigator Plugin</h3>
