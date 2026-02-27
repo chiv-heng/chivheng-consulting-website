@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Register for an upcoming workshop with Chiv Heng Consulting." />
+  <title>Workshop Registration | Chiv Heng Consulting</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="/public/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/public/favicon.svg" />
+  <link rel="shortcut icon" href="/public/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <header class="site-header">
+      <div class="container">
+        <a href="/" class="logo">
+          <img src="./public/logo-cropped.png" alt="Chiv Heng Consulting" height="56">
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section signup-section">
+        <div class="container">
+          <div class="signup-card">
+            <div class="signup-content">
+              <p class="workshop-eyebrow">Workshop Registration</p>
+              <h1>Register for a Workshop</h1>
+              <p class="signup-desc">Reserve your spot for an upcoming session. Space is intentionally limited
+                to keep things small and interactive.</p>
+              <ul class="workshop-details">
+                <li><i class="ph ph-users"></i> Small group (capped at 10)</li>
+                <li><i class="ph ph-map-pin"></i> In-person, Rhode Island</li>
+                <li><i class="ph ph-hand-heart"></i> Free, community-focused</li>
+              </ul>
+              <form id="workshop-signup-form" class="workshop-form">
+                <div class="form-group">
+                  <input type="text" name="name" placeholder="Your Name" required class="form-input">
+                </div>
+                <div class="form-group">
+                  <input type="email" name="email" placeholder="Your Email" required class="form-input">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="role" placeholder="Your Role / Title" class="form-input">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="organization" placeholder="School / Nonprofit Org" required
+                    class="form-input">
+                </div>
+                <div class="form-group">
+                  <label for="workshop-session" class="form-label sr-only">Workshop Session</label>
+                  <select name="workshop" id="workshop-session" required class="form-input form-select">
+                    <option value="" disabled selected>Loading sessions...</option>
+                  </select>
+                  <p id="session-notice" class="session-notice is-hidden"></p>
+                  <p id="session-details" class="session-details is-hidden"></p>
+                </div>
+                <div class="form-group form-honeypot" aria-hidden="true">
+                  <input type="text" name="website" tabindex="-1" autocomplete="off">
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Sign Up</button>
+              </form>
+              <div id="signup-form-success" class="form-success-message is-hidden">
+                <i class="ph ph-check-circle"></i>
+                <h3>You're registered!</h3>
+                <p>Check your email for a confirmation with session details and a calendar invite. Looking forward to it.</p>
+              </div>
+              <div id="signup-form-waitlisted" class="form-success-message form-waitlist-message is-hidden">
+                <i class="ph ph-hourglass"></i>
+                <h3>You're on the waitlist</h3>
+                <p>This session is currently full. We'll email you if a spot opens up.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <img src="./public/logo-cropped.png" alt="Chiv Heng Consulting" height="40" class="footer-logo">
+          <p class="footer-copy">&copy; 2026 Chiv Heng Consulting. Rhode Island.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script type="module" src="/src/signup.js"></script>
+</body>
+
+</html>

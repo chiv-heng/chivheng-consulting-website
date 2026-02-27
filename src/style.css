@@ -1465,6 +1465,16 @@ select.form-input {
   font-weight: 500;
 }
 
+.session-details {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-navy);
+}
+
+.form-waitlist-message i {
+  color: var(--color-gold-dark);
+}
+
 /* Mobile Sticky CTA */
 .mobile-sticky-cta {
   display: none;
