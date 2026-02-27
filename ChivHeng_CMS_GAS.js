@@ -14,24 +14,66 @@ function doGet(e) {
     return jsonResponse({ sessions: [] });
   }
 
-  // Columns A–I: Workshop Title, Session, Seats, Registered, Status, Date, Time, Duration, Location
+  // Columns A–I: Workshop Title, Session, Date, Time, Duration, Location, Seats, Registered, Status
   var data = sheet.getRange(2, 1, lastRow - 1, 9).getValues();
+  var tz = Session.getScriptTimeZone();
   var sessions = data
     .filter(function (row) {
       return row[0] !== '';
     })
     .map(function (row) {
+      var title = row[0];
+      var sessionLabel = row[1];
+      var date = row[2] ? new Date(row[2]) : null;
+      var time = row[3] instanceof Date
+        ? Utilities.formatDate(row[3], tz, 'h:mm a')
+        : String(row[3]);
+      var duration = String(row[4]);
+      var location = row[5];
+      var seats = row[6];
+      var registered = row[7];
+      var status = row[8];
+
+      // Build end time from time + duration for display
+      var endTime = '';
+      if (row[3] instanceof Date && duration) {
+        var endDate = new Date(row[3].getTime());
+        var durMatch = duration.match(/([\d.]+)\s*(hour|minute|min)/i);
+        if (durMatch) {
+          var ms = parseFloat(durMatch[1]) * (durMatch[2].toLowerCase().startsWith('min') ? 60000 : 3600000);
+          endDate.setTime(endDate.getTime() + ms);
+          endTime = Utilities.formatDate(endDate, tz, 'h:mm a');
+        }
+      }
+
+      // Display name: "AI For Good - Thu 3/12 - 4:00 PM - 6:00 PM"
+      var displayName = title;
+      if (date) {
+        var dayOfWeek = Utilities.formatDate(date, tz, 'EEE');
+        var monthDay = Utilities.formatDate(date, tz, 'M/d');
+        displayName += ' - ' + dayOfWeek + ' ' + monthDay;
+      }
+      if (time) {
+        displayName += ' - ' + time;
+        if (endTime) displayName += ' - ' + endTime;
+      }
+
+      // Unique key for COUNTIF and lookups: "title — session"
+      var name = title + ' — ' + sessionLabel;
+
       return {
-        title: row[0],
-        session: row[1],
-        name: row[0] + ' — ' + row[1],
-        seats: row[2],
-        registered: row[3],
-        status: row[4],
-        date: row[5] ? Utilities.formatDate(new Date(row[5]), Session.getScriptTimeZone(), 'yyyy-MM-dd') : '',
-        time: row[6],
-        duration: row[7],
-        location: row[8],
+        title: title,
+        session: sessionLabel,
+        name: name,
+        displayName: displayName,
+        seats: seats,
+        registered: registered,
+        status: status,
+        date: date ? Utilities.formatDate(date, tz, 'yyyy-MM-dd') : '',
+        time: time,
+        endTime: endTime,
+        duration: duration,
+        location: location,
       };
     });
 
@@ -116,6 +158,8 @@ function getSessionInfo(sessionName) {
   var lastRow = sheet.getLastRow();
   if (lastRow < 2) return null;
 
+  // Columns A–I: Workshop Title, Session, Date, Time, Duration, Location, Seats, Registered, Status
+  var tz = Session.getScriptTimeZone();
   var data = sheet.getRange(2, 1, lastRow - 1, 9).getValues();
   for (var i = 0; i < data.length; i++) {
     var row = data[i];
@@ -125,13 +169,15 @@ function getSessionInfo(sessionName) {
         title: row[0],
         session: row[1],
         name: name,
-        seats: row[2],
-        registered: row[3],
-        status: row[4],
-        date: row[5] ? new Date(row[5]) : null,
-        time: String(row[6]),
-        duration: String(row[7]),
-        location: String(row[8]),
+        seats: row[6],
+        registered: row[7],
+        status: row[8],
+        date: row[2] ? new Date(row[2]) : null,
+        time: row[3] instanceof Date
+          ? Utilities.formatDate(row[3], tz, 'h:mm a')
+          : String(row[3]),
+        duration: String(row[4]),
+        location: String(row[5]),
       };
     }
   }
@@ -187,19 +233,23 @@ function sendReminderEmails() {
   var workshopData = workshopsSheet.getRange(2, 1, workshopsSheet.getLastRow() - 1, 9).getValues();
   var upcomingSessions = [];
 
+  // Columns A–I: Workshop Title, Session, Date, Time, Duration, Location, Seats, Registered, Status
+  var tz = Session.getScriptTimeZone();
   for (var i = 0; i < workshopData.length; i++) {
     var row = workshopData[i];
-    if (!row[5] || row[4] === 'CLOSED') continue;
-    var sessionDate = new Date(row[5]);
+    if (!row[2] || row[8] === 'CLOSED') continue;
+    var sessionDate = new Date(row[2]);
     if (sessionDate >= tomorrow && sessionDate <= dayAfter) {
       upcomingSessions.push({
         title: row[0],
         session: row[1],
         name: row[0] + ' — ' + row[1],
         date: sessionDate,
-        time: String(row[6]),
-        duration: String(row[7]),
-        location: String(row[8]),
+        time: row[3] instanceof Date
+          ? Utilities.formatDate(row[3], tz, 'h:mm a')
+          : String(row[3]),
+        duration: String(row[4]),
+        location: String(row[5]),
       });
     }
   }

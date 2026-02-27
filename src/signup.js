@@ -17,7 +17,6 @@ function formatSessionDate(dateStr) {
 document.addEventListener('DOMContentLoaded', async () => {
   const sessionSelect = document.getElementById('workshop-session');
   const sessionNotice = document.getElementById('session-notice');
-  const sessionDetails = document.getElementById('session-details');
   const signupForm = document.getElementById('workshop-signup-form');
   let sessionsData = [];
 
@@ -37,11 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       openSessions.forEach(session => {
         const remaining = session.seats - session.registered;
-        const datePart = formatSessionDate(session.date);
-        let label = session.name;
-        if (datePart && session.time) {
-          label += ' \u00B7 ' + datePart + ', ' + session.time;
-        }
+        let label = session.displayName || session.name;
         if (remaining <= 4 && remaining > 0) {
           label += ' (few seats left)';
         }
@@ -75,14 +70,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         sessionNotice.classList.add('is-hidden');
       }
 
-      // Location details
-      if (sessionDetails && selected.location) {
-        sessionDetails.textContent = selected.location;
-        sessionDetails.classList.remove('is-hidden');
-      }
     } else {
       sessionNotice.classList.add('is-hidden');
-      if (sessionDetails) sessionDetails.classList.add('is-hidden');
     }
   });
 
