@@ -6,7 +6,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        signup: resolve(__dirname, 'signup-AI4Good.html'),
+        signup: resolve(__dirname, 'workshop-registration.html'),
       },
     },
   },
