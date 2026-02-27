@@ -34,6 +34,9 @@ testimonials-analysis.md
 # Personal files
 Chiv Heng Profile.pdf
 
+# Google Apps Script (backend — managed in Apps Script editor)
+ChivHeng_CMS_GAS.js
+
 # AI/agent directories
 .claude/
 .gemini/

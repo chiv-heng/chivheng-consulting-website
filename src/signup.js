@@ -109,6 +109,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
         const result = await res.json();
 
+        if (result.result === 'error') {
+          throw new Error(result.error || 'Registration failed');
+        }
+
         signupForm.classList.add('is-hidden');
 
         if (result.result === 'waitlisted') {
