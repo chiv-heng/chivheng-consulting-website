@@ -252,13 +252,14 @@ nav a:hover {
 }
 
 .hero-photo img {
-  width: 320px;
-  height: 320px;
+  width: 272px;
+  height: 272px;
   border-radius: 50%;
   object-fit: cover;
   object-position: center 20%;
-  scale: 0.85;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  margin: 24px;
+  /* to preserve the visual spacing previously simulated by scale: 0.85 on 320px */
 }
 
 .hero-eyebrow {
