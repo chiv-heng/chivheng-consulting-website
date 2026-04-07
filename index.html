@@ -333,7 +333,7 @@
       </section>
 
       <!-- Public Resources Section -->
-      <section id="tools" class="section tools-section">
+      <section id="resources" class="section tools-section">
         <div class="container">
           <h2 class="section-title">Open Systems Tools</h2>
           <p class="section-intro">I believe in building capacity, not gatekeeping knowledge. These are tools and guides
@@ -362,31 +362,31 @@
       </section>
 
       <!-- Lead Magnet Section -->
-      <section id="resources" class="section resources-section">
+      <section id="templates" class="section resources-section">
         <div class="container">
-          <h2 class="section-title">AI for Good Workshop Resources</h2>
-          <p class="section-intro">Enter your email below for immediate access to the practical exercises, prompt
-            templates, and curated resources from my in-person nonprofit workshop.</p>
+          <h2 class="section-title">Free Resources & Templates</h2>
+          <p class="section-intro">Enter your email below for immediate access to practical templates, prompt
+            libraries, and curated resources from my workshops and client engagements.</p>
 
           <div id="resources-lead-capture" class="lead-capture-card">
             <form id="resources-lead-form" class="workshop-form">
               <div class="form-row">
                 <div class="form-group">
-                  <input type="text" name="name" placeholder="Your Name" required class="form-input">
+                  <input type="text" name="name" placeholder="Your Name" required class="form-input" aria-label="Your Name">
                 </div>
                 <div class="form-group">
-                  <input type="email" name="email" placeholder="Your Email" required class="form-input">
+                  <input type="email" name="email" placeholder="Your Email" required class="form-input" aria-label="Your Email">
                 </div>
               </div>
               <input type="hidden" name="form_type" value="Downloads">
               <div class="form-group form-honeypot" aria-hidden="true">
                 <input type="text" name="website" tabindex="-1" autocomplete="off">
               </div>
-              <button type="submit" class="btn btn-primary btn-full">Access Workshop Content</button>
+              <button type="submit" class="btn btn-primary btn-full">Access Resources</button>
             </form>
           </div>
 
-          <div id="resources-unlocked" class="resources-grid is-hidden">
+          <div id="resources-unlocked" class="resources-grid">
             <div class="resource-card">
               <div class="resource-icon"><i class="ph ph-chalkboard-teacher"></i></div>
               <h3>AI for Good: Nonprofit Workshop Resources</h3>
@@ -395,8 +395,18 @@
                 While these materials are shared as part of my in-person workshop, I'm making them available
                 here for self-directed learners and as a reference for those who have participated in the
                 past.</p>
+              <span class="resource-lock"><i class="ph ph-lock"></i> Submit form to unlock</span>
               <a href="https://go.chivheng.com/ai4good-resources" target="_blank" rel="noopener"
-                class="resource-link">View in Notion <i class="ph ph-arrow-square-out"></i></a>
+                class="resource-link is-hidden">View in Notion <i class="ph ph-arrow-square-out"></i></a>
+            </div>
+
+            <div class="resource-card">
+              <div class="resource-icon"><i class="ph ph-table"></i></div>
+              <h3>RICAS Test Administration Project Plan Template</h3>
+              <p>A ready-to-use Google Sheet template for school leaders and test coordinators administering RICAS. Includes a phased task list with RIDE deadlines, role mapping for three staffing scenarios (solo, internal team, outsourced IT), a day-of playbook for test administrators, and a vendor guide for outsourced IT support. Pairs with a free NotebookLM notebook containing all 16 RIDE source documents.</p>
+              <span class="resource-lock"><i class="ph ph-lock"></i> Submit form to unlock</span>
+              <a href="https://go.chivheng.com/RICAS-Project-Template" target="_blank" rel="noopener"
+                class="resource-link is-hidden">View Google Sheet <i class="ph ph-arrow-square-out"></i></a>
             </div>
           </div>
         </div>
@@ -422,14 +432,14 @@
               </ul>
               <form id="workshop-interest-form" class="workshop-form">
                 <div class="form-group">
-                  <input type="text" name="name" placeholder="Your Name" required class="form-input">
+                  <input type="text" name="name" placeholder="Your Name" required class="form-input" aria-label="Your Name">
                 </div>
                 <div class="form-group">
-                  <input type="email" name="email" placeholder="Your Email" required class="form-input">
+                  <input type="email" name="email" placeholder="Your Email" required class="form-input" aria-label="Your Email">
                 </div>
                 <div class="form-group">
                   <input type="text" name="organization" placeholder="School / Nonprofit Org" required
-                    class="form-input">
+                    class="form-input" aria-label="School or Nonprofit Organization">
                 </div>
                 <div class="form-group">
                   <label for="participation-type" class="form-label sr-only">Interest Type</label>

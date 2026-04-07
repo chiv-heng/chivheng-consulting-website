@@ -779,6 +779,24 @@ nav a:hover {
   font-size: 1rem;
 }
 
+.resource-lock {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  margin-top: auto;
+  padding: 0.5rem 1rem;
+  background: rgba(43, 76, 126, 0.04);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(43, 76, 126, 0.12);
+}
+
+.resource-lock i {
+  font-size: 1.125rem;
+}
+
 /* Workshop Section */
 .workshop-section {
   background: var(--color-navy);

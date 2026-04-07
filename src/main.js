@@ -128,7 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const honeypot = resourcesForm.querySelector('[name="website"]').value;
       if (honeypot) {
         document.getElementById('resources-lead-capture').classList.add('is-hidden');
-        document.getElementById('resources-unlocked').classList.remove('is-hidden');
+        document.querySelectorAll('.resource-lock').forEach(el => el.classList.add('is-hidden'));
+        document.querySelectorAll('#resources-unlocked .resource-link').forEach(el => el.classList.remove('is-hidden'));
         return;
       }
 
@@ -149,9 +150,10 @@ document.addEventListener('DOMContentLoaded', () => {
           body: JSON.stringify(formData),
         });
 
-        // Hide form, reveal resources
+        // Hide form, reveal resources links
         document.getElementById('resources-lead-capture').classList.add('is-hidden');
-        document.getElementById('resources-unlocked').classList.remove('is-hidden');
+        document.querySelectorAll('.resource-lock').forEach(el => el.classList.add('is-hidden'));
+        document.querySelectorAll('#resources-unlocked .resource-link').forEach(el => el.classList.remove('is-hidden'));
       } catch (error) {
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
