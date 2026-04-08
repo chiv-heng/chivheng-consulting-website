@@ -878,10 +878,46 @@ nav a:hover {
   line-height: 1.6;
 }
 
+.proof-pull {
+  display: block;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--color-navy);
+  margin-bottom: 0.5rem;
+}
+
 .proof-author {
   font-size: 0.875rem;
   color: var(--color-text-muted);
   font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .proof-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 2rem;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    margin-left: -5vw;
+    margin-right: -5vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    scrollbar-width: none;
+  }
+  
+  .proof-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .proof-card {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+  }
 }
 
 /* About Section */
