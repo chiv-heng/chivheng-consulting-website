@@ -36,7 +36,11 @@ Chiv Heng Profile.pdf
 
 # Google Apps Script (backend — managed in Apps Script editor)
 ChivHeng_CMS_GAS.js
+gas/
 
 # AI/agent directories
-.claude/
 .gemini/
+
+# Claude Code — machine-specific (don't commit)
+.claude/settings.local.json
+.claude/memory/

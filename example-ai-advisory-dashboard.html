@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boardroom Decision: Staffing Studio vs College Visit Planner</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface-2: #242836;
+    --border: #2e3345;
+    --text: #e4e7ef;
+    --text-muted: #8b90a0;
+    --yes: #22c55e;
+    --no: #ef4444;
+    --conditional: #f59e0b;
+    --accent: #6366f1;
+    --accent-light: #818cf8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+  h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
+  .subtitle { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; }
+  .date { color: var(--accent-light); }
+
+  /* Consensus Banner */
+  .consensus-banner {
+    background: linear-gradient(135deg, #16a34a22, #22c55e11);
+    border: 1px solid #22c55e44;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .consensus-banner h2 { color: var(--yes); font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .consensus-banner p { color: var(--text-muted); }
+  .consensus-banner .big { font-size: 2.5rem; font-weight: 800; color: var(--yes); }
+
+  /* Vote Grid */
+  .vote-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .advisor-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    transition: transform 0.2s;
+  }
+  .advisor-card:hover { transform: translateY(-2px); }
+  .advisor-name { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.25rem; }
+  .advisor-role { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.75rem; }
+  .vote-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem; }
+  .vote-label { color: var(--text-muted); font-size: 0.8rem; width: 70px; }
+  .vote-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .vote-yes { background: #22c55e22; color: var(--yes); border: 1px solid #22c55e44; }
+  .vote-no { background: #ef444422; color: var(--no); border: 1px solid #ef444444; }
+  .vote-conditional { background: #f59e0b22; color: var(--conditional); border: 1px solid #f59e0b44; }
+  .changed-badge { background: var(--accent); color: white; padding: 2px 8px; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-left: 0.5rem; }
+  .advisor-quote { color: var(--text-muted); font-size: 0.85rem; font-style: italic; margin-top: 0.75rem; border-left: 2px solid var(--accent); padding-left: 0.75rem; }
+
+  /* Sections */
+  .section { margin-bottom: 2rem; }
+  .section h3 { font-size: 1.15rem; margin-bottom: 1rem; color: var(--accent-light); }
+
+  /* Sliders */
+  .slider-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .slider-group {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+  }
+  .slider-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
+  .slider-group .slider-hint { color: var(--text-muted); font-size: 0.75rem; margin-bottom: 0.5rem; }
+  .slider-group input[type=range] { width: 100%; accent-color: var(--accent); }
+  .slider-value { text-align: right; font-size: 0.9rem; color: var(--accent-light); font-weight: 600; }
+
+  /* Projections */
+  .projections {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .proj-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .proj-col h4 { margin-bottom: 0.75rem; font-size: 1rem; }
+  .proj-col.ss h4 { color: var(--yes); }
+  .proj-col.cvp h4 { color: var(--no); }
+  .proj-item { display: flex; justify-content: space-between; padding: 0.4rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  .proj-item:last-child { border-bottom: none; }
+  .proj-item .val { font-weight: 600; color: var(--text); }
+
+  /* Tension Map */
+  .tension-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  .tension-title { font-weight: 700; margin-bottom: 0.5rem; color: var(--conditional); }
+  .tension-desc { color: var(--text-muted); font-size: 0.9rem; }
+  .tension-who { font-size: 0.8rem; color: var(--accent-light); margin-top: 0.5rem; }
+
+  /* Expandable */
+  details { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 0.5rem; }
+  details summary { padding: 1rem 1.25rem; cursor: pointer; font-weight: 600; font-size: 0.95rem; }
+  details summary:hover { color: var(--accent-light); }
+  details .content { padding: 0 1.25rem 1.25rem; color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
+
+  /* Action Plan */
+  .action-table { width: 100%; border-collapse: collapse; }
+  .action-table th, .action-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  .action-table th { color: var(--accent-light); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; }
+
+  @media print {
+    body { background: white; color: black; }
+    .container { max-width: 100%; padding: 1rem; }
+    .advisor-card, .slider-group, .projections, .tension-item, details { border-color: #ddd; background: #f9f9f9; }
+    .vote-yes, .vote-no, .vote-conditional { border-color: #999; }
+    h1, h3, .consensus-banner h2 { color: black; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Boardroom Decision Report</h1>
+  <p class="subtitle">Should I continue Staffing Studio K12, shift to College Visit Planner, or do both? &mdash; <span class="date">February 20, 2026</span></p>
+
+  <div class="consensus-banner">
+    <div class="big">8-0</div>
+    <h2>Unanimous: Continue Staffing Studio K12</h2>
+    <p>6 YES + 2 CONDITIONAL &mdash; all favoring Option A. Sal Khan moved from NO to CONDITIONAL after Round 2.</p>
+  </div>
+
+  <div class="section">
+    <h3>Advisor Votes</h3>
+    <div class="vote-grid">
+      <div class="advisor-card">
+        <div class="advisor-name">Geoffrey Canada</div>
+        <div class="advisor-role">Domain Expert &bull; Harlem Children's Zone</div>
+        <div class="vote-row"><span class="vote-label">Round 1:</span><span class="vote-badge vote-yes">YES (a)</span></div>
+        <div class="vote-row"><span class="vote-label">Final:</span><span class="vote-badge vote-yes">YES (a)</span></div>
+        <div class="advisor-quote">"The kids in those schools need you to finish what you started."</div>
+      </div>
+      <div class="advisor-card">
+        <div class="advisor-name">Sam Hinkie</div>
+        <div class="advisor-role">Adjacent Visionary &bull; The Process</div>
+        <div class="vote-row"><span class="vote-label">Round 1:</span><span class="vote-badge vote-yes">YES (a)</span></div>
+        <div class="vote-row"><span class="vote-label">Final:</span><span class="vote-badge vote-yes">YES (a)</span></div>
+        <div class="advisor-quote">"Shiny objects are the enemy of compounding. Trust the process."</div>
+      </div>
+      <div class="advisor-card">
+        <div class="advisor-name">Jason Fried</div>
+        <div class="advisor-role">Contrarian &bull; 37signals</div>
+        <div class="vote-row"><span class="vote-label">Round 1:</span><span class="vote-badge vote-yes">YES (a)</span></div>
+        <div class="vote-row"><span class="vote-label">Final:</span><span class="vote-badge vote-yes">YES (a)</span></div>
+        <div class="advisor-quote">"113K lines of code and zero customers. That is a hobby with exceptional documentation."</div>
+      </div>
+      <div class="advisor-card">
+        <div class="advisor-name">Tobi Lutke</div>
+        <div class="advisor-role">Radical Thinker &bull; Shopify</div>
+        <div class="vote-row"><span class="vote-label">Round 1:</span><span class="vote-badge vote-conditional">COND (a)</span></div>
+        <div class="vote-row"><span class="vote-label">Final:</span><span class="vote-badge vote-conditional">COND (a)</span></div>
+        <div class="advisor-quote">"Code without customers is inventory, not product-market fit."</div>
+      </div>
+      <div class="advisor-card">
+        <div class="advisor-name">April Dunford</div>
+        <div class="advisor-role">Operator &bull; Positioning Expert</div>
+        <div class="vote-row"><span class="vote-label">Round 1:</span><span class="vote-badge vote-yes">YES (a)</span></div>
+        <div class="vote-row"><span class="vote-label">Final:</span><span class="vote-badge vote-yes">YES (a)</span></div>
+        <div class="advisor-quote">"You have a positioning problem, not a product problem."</div>
+      </div>
+      <div class="advisor-card">
+        <div class="advisor-name">Wendy Kopp</div>
+        <div class="advisor-role">Impact Leader &bull; Teach For America</div>
+        <div class="vote-row"><span class="vote-label">Round 1:</span><span class="vote-badge vote-conditional">COND (a)</span></div>
+        <div class="vote-row"><span class="vote-label">Final:</span><span class="vote-badge vote-conditional">COND (a)</span></div>
+        <div class="advisor-quote">"Education moves at the speed of trust. Give it the time trust requires."</div>
+      </div>
+      <div class="advisor-card">
+        <div class="advisor-name">Rob Walling</div>
+        <div class="advisor-role">Financial Strategist &bull; TinySeed</div>
+        <div class="vote-row"><span class="vote-label">Round 1:</span><span class="vote-badge vote-yes">YES (a)</span></div>
+        <div class="vote-row"><span class="vote-label">Final:</span><span class="vote-badge vote-yes">YES (a)</span></div>
+        <div class="advisor-quote">"You don't need a new product. You need 10 schools who will pay you $8,000 a year."</div>
+      </div>
+      <div class="advisor-card">
+        <div class="advisor-name">Sal Khan</div>
+        <div class="advisor-role">Ed-Tech Visionary &bull; Khan Academy</div>
+        <div class="vote-row"><span class="vote-label">Round 1:</span><span class="vote-badge vote-no">NO (b)</span></div>
+        <div class="vote-row"><span class="vote-label">Final:</span><span class="vote-badge vote-conditional">COND (a)</span><span class="changed-badge">CHANGED</span></div>
+        <div class="advisor-quote">"I underweighted consumer distribution difficulty. But 113K LOC and zero users is itself a signal."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Interactive Projections</h3>
+    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">Adjust assumptions to see how revenue projections change for each path.</p>
+    <div class="slider-grid">
+      <div class="slider-group">
+        <label>Schools in 60-Day Sprint</label>
+        <div class="slider-hint">How many charter schools will you pitch?</div>
+        <input type="range" id="ss-schools-pitched" min="5" max="50" value="20" oninput="recalc()">
+        <div class="slider-value" id="ss-schools-pitched-val">20</div>
+      </div>
+      <div class="slider-group">
+        <label>Pilot Conversion Rate (%)</label>
+        <div class="slider-hint">% of pitched schools that commit to pilot</div>
+        <input type="range" id="ss-conv" min="2" max="30" value="15" oninput="recalc()">
+        <div class="slider-value" id="ss-conv-val">15%</div>
+      </div>
+      <div class="slider-group">
+        <label>Annual Contract Value ($)</label>
+        <div class="slider-hint">Price per school per year</div>
+        <input type="range" id="ss-acv" min="2000" max="15000" value="8000" step="500" oninput="recalc()">
+        <div class="slider-value" id="ss-acv-val">$8,000</div>
+      </div>
+      <div class="slider-group">
+        <label>CVP Free-to-Paid Conversion (%)</label>
+        <div class="slider-hint">% of free users who subscribe</div>
+        <input type="range" id="cvp-conv" min="1" max="10" value="3" oninput="recalc()">
+        <div class="slider-value" id="cvp-conv-val">3%</div>
+      </div>
+      <div class="slider-group">
+        <label>CVP Year 1 Downloads</label>
+        <div class="slider-hint">Total app downloads in first year</div>
+        <input type="range" id="cvp-downloads" min="500" max="50000" value="5000" step="500" oninput="recalc()">
+        <div class="slider-value" id="cvp-downloads-val">5,000</div>
+      </div>
+      <div class="slider-group">
+        <label>CVP Annual Price ($)</label>
+        <div class="slider-hint">Subscription price per year</div>
+        <input type="range" id="cvp-price" min="49" max="199" value="125" step="1" oninput="recalc()">
+        <div class="slider-value" id="cvp-price-val">$125</div>
+      </div>
+    </div>
+
+    <div class="projections">
+      <div class="proj-grid">
+        <div class="proj-col ss">
+          <h4>Staffing Studio K12</h4>
+          <div class="proj-item"><span>Schools pitched</span><span class="val" id="p-ss-pitched">20</span></div>
+          <div class="proj-item"><span>Pilots committed</span><span class="val" id="p-ss-pilots">3</span></div>
+          <div class="proj-item"><span>Year 1 ARR</span><span class="val" id="p-ss-arr">$24,000</span></div>
+          <div class="proj-item"><span>Months to $80K ARR</span><span class="val" id="p-ss-months">—</span></div>
+          <div class="proj-item"><span>Schools needed for $80K</span><span class="val" id="p-ss-needed">10</span></div>
+        </div>
+        <div class="proj-col cvp">
+          <h4>College Visit Planner</h4>
+          <div class="proj-item"><span>Year 1 downloads</span><span class="val" id="p-cvp-downloads">5,000</span></div>
+          <div class="proj-item"><span>Paid subscribers</span><span class="val" id="p-cvp-paid">150</span></div>
+          <div class="proj-item"><span>Year 1 ARR</span><span class="val" id="p-cvp-arr">$18,750</span></div>
+          <div class="proj-item"><span>Downloads for $80K</span><span class="val" id="p-cvp-needed">21,333</span></div>
+          <div class="proj-item"><span>Paid users for $80K</span><span class="val" id="p-cvp-users-needed">640</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Key Tensions</h3>
+    <div class="tension-item">
+      <div class="tension-title">60-Day Kill Switch vs. 9-Month Gate</div>
+      <div class="tension-desc">Most advisors want a 60-day sales sprint. Wendy Kopp argues K-12 procurement doesn't move in 60 days — districts need board approvals, vendor vetting, budget cycles. Resolution: measure <em>interest</em> (LOIs, pilots) at 60 days, not closed revenue.</div>
+      <div class="tension-who">Tobi/Jason/April/Rob/Sam (60d) vs. Wendy (9mo) vs. Sal (30d)</div>
+    </div>
+    <div class="tension-item">
+      <div class="tension-title">Builder's Comfort Zone vs. Sales Reality</div>
+      <div class="tension-desc">The founder has spent 11 milestones building without attempting to sell. Every advisor flagged this pattern. Is it avoidance of the hard part (selling), or is it evidence the market isn't pulling?</div>
+      <div class="tension-who">Jason Fried ("hobby") &amp; Sal Khan ("absence of pull is a signal") — two sides of the same coin</div>
+    </div>
+    <div class="tension-item">
+      <div class="tension-title">Joy vs. Expected Value</div>
+      <div class="tension-desc">CVP scores 8/10 on founder joy; Staffing Studio scores 5-6/10. Multiple advisors argued joy from greenfield building fades fast once you hit distribution walls. But Wendy Kopp's joy floor (below 4/10 = reassess) acknowledges burnout is a real strategic risk.</div>
+      <div class="tension-who">Sal Khan (follow the joy) vs. Jason Fried (joy is a trap) vs. Wendy Kopp (joy has a floor)</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Recommended Action Plan</h3>
+    <table class="action-table">
+      <tr><th>When</th><th>What</th><th>Success Signal</th></tr>
+      <tr><td>Week 1-2</td><td>20 discovery calls. Listen, don't sell. Understand pain.</td><td>Can articulate buyer's language</td></tr>
+      <tr><td>Week 3-4</td><td>Refine positioning. Build 2-min demo video.</td><td>Clear value prop in buyer's words</td></tr>
+      <tr><td>Week 5-8</td><td>30 targeted outreach to charter networks. Free 90-day pilot offer.</td><td>3+ LOIs or pilot commitments</td></tr>
+      <tr><td>Day 60</td><td>Decision gate. Count LOIs, pilots, warm leads.</td><td>3+ committed = double down</td></tr>
+      <tr><td>If positive</td><td>Close pilots. Build only what they request. Target $80K ARR.</td><td>First paying customer by Month 6</td></tr>
+      <tr><td>If negative</td><td>Archive Staffing Studio. Evaluate all options with clear eyes.</td><td>Clean sunset, preserved learnings</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>Full Advisor Arguments</h3>
+    <details>
+      <summary>Geoffrey Canada &mdash; Domain Expert</summary>
+      <div class="content">
+        <p><strong>Core argument:</strong> Pipeline thinking — fixing staffing operations unlocks instructional leadership, which drives student outcomes. "Every week a position sits unfilled, kids lose."</p>
+        <p><strong>On CVP:</strong> "The families you want to serve with the College Visit Planner — those are my kids. The thing that gets those kids to college is having great teachers in their schools right now."</p>
+        <p><strong>Key rebuttal:</strong> Challenged Sal Khan's viral adoption comparison — Khan Academy had years, philanthropic backing, and zero monetization pressure. "That is not analogous. That is aspirational to the point of being dangerous advice."</p>
+      </div>
+    </details>
+    <details>
+      <summary>Sam Hinkie &mdash; Adjacent Visionary</summary>
+      <div class="content">
+        <p><strong>Core argument:</strong> Expected value analysis. 15-25 schools at $3-10K each vs. 640 families at $125 each. "The denominator matters." Probability: 30-45% (SS) vs 5-15% (CVP).</p>
+        <p><strong>Framework:</strong> Optionality preservation — build CVP later from a position of strength. "Options increase in value with time and information."</p>
+        <p><strong>Key rebuttal:</strong> Called Sal's $50-200K CVP projection "not a forecast, it's a wish." Endorsed Tobi's kill switch as "Tetlock-grade forecasting discipline."</p>
+      </div>
+    </details>
+    <details>
+      <summary>Jason Fried &mdash; Contrarian</summary>
+      <div class="content">
+        <p><strong>Core argument:</strong> "Stop building. Start selling. Today. This week." The product is done. The gap is 50 phone calls.</p>
+        <p><strong>Sharpest line:</strong> "The hardest part of a solo founder's journey isn't building. It's the moment you stop building and start putting your work in front of people who might say no."</p>
+        <p><strong>On CVP joy:</strong> "That joy lasts about 6 weeks. Then you're back to the same grind, except now you're in a harder market."</p>
+      </div>
+    </details>
+    <details>
+      <summary>Tobi Lutke &mdash; Radical Thinker</summary>
+      <div class="content">
+        <p><strong>Core argument:</strong> 60-day kill switch. Freeze features, pure sales. 3 paying customers by Day 60 or sunset cleanly. "Code without customers is inventory, not product-market fit."</p>
+        <p><strong>Framework:</strong> Compounding and leverage — domain knowledge encoded in 113K LOC is real leverage, but only if activated by customers.</p>
+      </div>
+    </details>
+    <details>
+      <summary>April Dunford &mdash; Operator</summary>
+      <div class="content">
+        <p><strong>Core argument:</strong> Positioning problem, not product problem. Competitive alternative is spreadsheets (inertia, not software). 20 discovery calls to reframe the value proposition.</p>
+        <p><strong>CVP positioning analysis:</strong> "Free alternatives are good enough. A $99/year subscription for something you use for 6-8 months of your life? That is a tough sell."</p>
+        <p><strong>Most cited insight:</strong> "Spreadsheets are the real competitor" — referenced by 5 other advisors as the most actionable reframe.</p>
+      </div>
+    </details>
+    <details>
+      <summary>Wendy Kopp &mdash; Impact Leader</summary>
+      <div class="content">
+        <p><strong>Core argument:</strong> Systems change vs. point solution. Staffing Studio touches budgets, compliance, HR, and instructional planning simultaneously. CVP solves one moment.</p>
+        <p><strong>Dissent on timeline:</strong> 9-month gate, not 60 days. "Education moves at the speed of trust." TFA took 18 months to formalize first district partnership — and they were offering teachers for free.</p>
+        <p><strong>Unique contribution:</strong> Joy floor — if founder joy drops below 4/10, reassess regardless of traction.</p>
+      </div>
+    </details>
+    <details>
+      <summary>Rob Walling &mdash; Financial Strategist</summary>
+      <div class="content">
+        <p><strong>Core argument:</strong> B2C freemium as solo founder is "hard mode." Need 325K free users at 2% conversion for $80K ARR. Staffing Studio needs 8-27 schools. "You don't need a new product. You need 10 schools."</p>
+        <p><strong>Stair-step framework:</strong> Founder built a Step 2/3 product without completing Step 1 (learning to sell). The fix is sales, not a new product.</p>
+        <p><strong>Price anchor:</strong> $8K/year minimum. "If you're solving a real staffing problem for a school managing a $2-5M personnel budget, $8K/year is a rounding error."</p>
+      </div>
+    </details>
+    <details>
+      <summary>Sal Khan &mdash; Ed-Tech Visionary (Changed Vote)</summary>
+      <div class="content">
+        <p><strong>Round 1:</strong> Advocated shifting to CVP. "Go where the families are. Build for families, institutions will follow." Projected $50-200K Year 1 revenue.</p>
+        <p><strong>Round 2:</strong> Moved to CONDITIONAL (a). "I underweighted consumer distribution difficulty." Rob Walling's B2C math was persuasive.</p>
+        <p><strong>Lingering challenge:</strong> "Seven of you voted to continue a product with 113K LOC and zero users. The absence of any pull after 11 milestones is itself a signal."</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<script>
+function recalc() {
+  const schoolsPitched = +document.getElementById('ss-schools-pitched').value;
+  const ssConv = +document.getElementById('ss-conv').value;
+  const ssAcv = +document.getElementById('ss-acv').value;
+  const cvpConv = +document.getElementById('cvp-conv').value;
+  const cvpDownloads = +document.getElementById('cvp-downloads').value;
+  const cvpPrice = +document.getElementById('cvp-price').value;
+
+  // Update slider displays
+  document.getElementById('ss-schools-pitched-val').textContent = schoolsPitched;
+  document.getElementById('ss-conv-val').textContent = ssConv + '%';
+  document.getElementById('ss-acv-val').textContent = '$' + ssAcv.toLocaleString();
+  document.getElementById('cvp-conv-val').textContent = cvpConv + '%';
+  document.getElementById('cvp-downloads-val').textContent = cvpDownloads.toLocaleString();
+  document.getElementById('cvp-price-val').textContent = '$' + cvpPrice;
+
+  // Staffing Studio calculations
+  const ssPilots = Math.round(schoolsPitched * ssConv / 100);
+  const ssArr = ssPilots * ssAcv;
+  const ssNeeded = Math.ceil(80000 / ssAcv);
+  const ssMonths = ssPilots > 0 ? Math.ceil(ssNeeded / ssPilots * 4) : '—';
+
+  document.getElementById('p-ss-pitched').textContent = schoolsPitched;
+  document.getElementById('p-ss-pilots').textContent = ssPilots;
+  document.getElementById('p-ss-arr').textContent = '$' + ssArr.toLocaleString();
+  document.getElementById('p-ss-months').textContent = ssMonths;
+  document.getElementById('p-ss-needed').textContent = ssNeeded;
+
+  // CVP calculations
+  const cvpPaid = Math.round(cvpDownloads * cvpConv / 100);
+  const cvpArr = cvpPaid * cvpPrice;
+  const cvpUsersNeeded = Math.ceil(80000 / cvpPrice);
+  const cvpDownloadsNeeded = Math.ceil(cvpUsersNeeded / (cvpConv / 100));
+
+  document.getElementById('p-cvp-downloads').textContent = cvpDownloads.toLocaleString();
+  document.getElementById('p-cvp-paid').textContent = cvpPaid.toLocaleString();
+  document.getElementById('p-cvp-arr').textContent = '$' + cvpArr.toLocaleString();
+  document.getElementById('p-cvp-needed').textContent = cvpDownloadsNeeded.toLocaleString();
+  document.getElementById('p-cvp-users-needed').textContent = cvpUsersNeeded.toLocaleString();
+}
+recalc();
+</script>
+</body>
+</html>
