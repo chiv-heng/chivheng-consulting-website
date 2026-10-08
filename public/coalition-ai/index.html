@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Coalition AI Field Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root {
+--paper: #ffffff;
+--ink: #333333;
+--muted: #5c6470;
+--rule: #d9dde3;
+--soft: #f5f5f5;
+--navy: #2c5282;
+--gold: #d4af37;
+--idea-bg: #2c5282;
+--idea-ink: #ffffff;
+--display: "Outfit", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+--body: "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+:root:not([data-theme="light"]) {
+--paper: #131a24; --ink: #e6e9ee; --muted: #a4adb9; --rule: #2e3948; --soft: #1a2330;
+--navy: #9dbfe8; --idea-bg: #234268; color-scheme: dark;
+}
+}
+:root[data-theme="dark"] {
+--paper: #131a24; --ink: #e6e9ee; --muted: #a4adb9; --rule: #2e3948; --soft: #1a2330;
+--navy: #9dbfe8; --idea-bg: #234268; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+background: var(--paper);
+color: var(--ink);
+font-family: var(--body);
+font-size: 15px;
+line-height: 1.45;
+}
+.sheet {
+max-width: 980px;
+margin: 0 auto;
+padding-inline: 20px;
+padding-block: 28px 36px;
+display: grid;
+gap: 22px;
+}
+a { color: var(--navy); text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
+.dom { color: var(--muted); font-size: 0.82em; white-space: nowrap; }
+h1, h2 { font-family: var(--display); font-weight: 700; color: var(--navy); text-wrap: balance; margin: 0; }
+h1 { font-size: 2.05rem; line-height: 1.1; letter-spacing: -0.015em; }
+h2 { font-size: 1.15rem; font-weight: 600; }
+.eyebrow {
+font-size: 0.72rem; font-weight: 600; letter-spacing: 0.09em;
+text-transform: uppercase; color: var(--muted); margin: 0;
+}
+p { margin: 0; }
+.mast { display: grid; gap: 6px; padding-bottom: 14px; border-bottom: 2px solid var(--navy); position: relative; }
+.mast::after { content: ""; position: absolute; left: 0; bottom: -5px; width: 72px; height: 3px; background: var(--gold); }
+.mast .brandrow { display: flex; justify-content: space-between; align-items: baseline; gap: 12px 20px; flex-wrap: wrap; }
+.mast .wordmark { font-family: var(--display); font-weight: 600; font-size: 0.95rem; color: var(--navy); white-space: nowrap; }
+.mast .wordmark::before { content: ""; display: inline-block; width: 0.62em; height: 0.62em; background: var(--gold); margin-right: 0.45em; }
+.mast .byline { color: var(--muted); font-size: 0.9rem; }
+.top { display: grid; grid-template-columns: 1.55fr 1fr; gap: 22px; align-items: start; }
+.top > * { min-width: 0; }
+.changed { display: grid; gap: 10px; }
+.changed ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 9px; }
+.changed li { padding-left: 14px; border-left: 2px solid var(--gold); }
+.changed li strong { font-weight: 600; color: var(--navy); }
+.idea {
+background: var(--idea-bg);
+color: var(--idea-ink);
+border-radius: 6px;
+border-top: 4px solid var(--gold);
+padding: 18px;
+display: grid;
+gap: 10px;
+-webkit-print-color-adjust: exact;
+print-color-adjust: exact;
+}
+.idea .eyebrow { color: var(--idea-ink); opacity: 0.85; }
+.idea .big { font-family: var(--display); font-size: 1.5rem; line-height: 1.18; font-weight: 700; }
+.idea .big span { color: var(--gold); }
+.questions { display: grid; gap: 10px; }
+.qgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.q {
+background: var(--soft); border-top: 3px solid var(--navy); padding: 10px 12px 12px;
+display: grid; gap: 6px; align-content: start; min-width: 0;
+-webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.q .who { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); }
+.q .ask { font-family: var(--display); font-weight: 500; font-size: 1.06rem; line-height: 1.28; color: var(--navy); }
+.q .note { color: var(--muted); font-size: 0.86rem; }
+.shelf { display: grid; gap: 10px; }
+.sgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.col { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.col h3 { margin: 0; font-family: var(--body); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--navy); border-bottom: 1px solid var(--rule); padding-bottom: 5px; }
+.col ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.col li { font-size: 0.88rem; line-height: 1.38; }
+.col li b { font-weight: 600; }
+.foot { border-top: 1px solid var(--rule); padding-top: 10px; color: var(--muted); font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.scan { display: none; }
+@media (max-width: 760px) {
+.top, .qgrid { grid-template-columns: 1fr; }
+.sgrid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 460px) {
+.sgrid { grid-template-columns: 1fr; }
+h1 { font-size: 1.6rem; }
+}
+@media print {
+@page { size: letter; margin: 0.4in; }
+:root { --paper: #fff; --ink: #222; --muted: #4a4f57; --rule: #bbb; --soft: #f5f5f5; --navy: #2c5282; --idea-bg: #2c5282; }
+html { font-size: 10pt; }
+body { font-size: 0.94rem; line-height: 1.4; }
+.mast::after, .mast .wordmark::before { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.sheet { max-width: none; padding: 0; gap: 11px; }
+h1 { font-size: 19pt; }
+.idea { padding: 10px; }
+.idea .big { font-size: 13pt; }
+.q { padding: 7px 9px 8px; }
+.top, .qgrid { gap: 12px; }
+.top { grid-template-columns: 1.55fr 1fr; }
+.qgrid { grid-template-columns: repeat(3, 1fr); }
+.sgrid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+a { color: var(--ink); text-decoration: none; }
+.mast { grid-template-columns: 1fr auto; column-gap: 16px; }
+.mast > :not(.scan) { grid-column: 1; }
+.scan { grid-column: 2; grid-row: 1 / span 3; align-self: center; display: flex; align-items: center; gap: 8px; font-size: 7.5pt; font-weight: 600; color: var(--navy); text-align: right; max-width: 1.75in; }
+.scan .qr { width: 0.85in; height: 0.85in; display: block; flex: none; }
+}
+</style>
+<style>body{margin:0}</style>
+</head>
+<body>
+<main class="sheet">
+<header class="mast">
+<div class="brandrow">
+<p class="eyebrow">For statewide coalition leaders · children and families</p>
+<p class="wordmark">Chiv Heng Consulting</p>
+</div>
+<h1>AI that acts on our behalf: what changed, and what to ask</h1>
+<p class="byline">Prepared by Chiv Heng · October 8, 2026 · Figures are dated; this field moves weekly.</p>
+</header>
+<section class="top">
+<div class="changed">
+<h2>What changed in the last 30 days</h2>
+<ul>
+<li><strong>Personal agents went consumer.</strong> Meta launched <a href="https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/">Muse</a> on September 8. It books appointments, fills out forms and manages email, in its own app and in WhatsApp. Adults 18+ only.</li>
+<li><strong>Accountability became the question.</strong> OpenAI test agents escaped their sandbox and breached Hugging Face in July. A safety group <a href="https://www.cnbc.com/2026/09/30/openai-sued-cyberattack.html">sued OpenAI</a> on September 30.</li>
+<li><strong>AI became openly political.</strong> A September 29 <a href="https://www.whitehouse.gov/fact-sheets/2026/09/fact-sheet-president-donald-j-trump-inaugurates-the-era-of-super-intelligence/">executive order</a> told federal agencies to call AI "super intelligence."</li>
+<li><strong>The public wants guardrails.</strong> <a href="https://poll.qu.edu/poll-release?releaseid=3969">Quinnipiac</a> (Sept. 30): 86% support independent safety standards for AI companies. <a href="https://www.umass.edu/poll/about/reports/2026-09-national-public-opinion-poll-2">UMass Amherst</a> (Sept. 14): 65% oppose an AI data center in their community.</li>
+</ul>
+</div>
+<aside class="idea" aria-label="The one idea">
+<p class="eyebrow">The one idea to carry home</p>
+<p class="big">A chatbot answers.<br><span>An agent acts.</span></p>
+<p>If a tool can send, submit, sign or schedule, treat it like a staff member with keys. Ask who gave it access, what it can reach, and who reviews its work.</p>
+</aside>
+</section>
+<section class="questions">
+<h2>Three questions to bring back to your coalition</h2>
+<div class="qgrid">
+<div class="q">
+<p class="who">Inside your coalition</p>
+<p class="ask">Would you know if a staff member's personal agent could read your board email or calendar?</p>
+<p class="note">Most AI policies cover note-takers and chat tools. Agents raise the stakes from recording to acting. Deciding not to allow them at all is a legitimate policy.</p>
+</div>
+<div class="q">
+<p class="who">Across your members</p>
+<p class="ask">Do member AI policies cover a tool that sends email or fills out forms for a worker?</p>
+<p class="note">A workable baseline: no client information in personal accounts, organization-licensed tools with signed vendor agreements, and a named person approves anything sent.</p>
+</div>
+<div class="q">
+<p class="who">With your state</p>
+<p class="ask">When your state buys AI for eligibility, case management or child welfare screening, who speaks for families?</p>
+<p class="note">Families may soon apply for benefits through their own agents. Coalitions hold the state relationships to shape the rules.</p>
+</div>
+</div>
+</section>
+<section class="shelf">
+<h2>Where to keep learning</h2>
+<div class="sgrid">
+<div class="col">
+<h3>Start here</h3>
+<ul>
+<li><b>NTEN</b>, <a href="https://www.nten.org/learn/resource-hubs/artificial-intelligence">AI resource hub</a>: sample policies, vendor questions, adoption research. <span class="dom">nten.org</span></li>
+<li><b>Beth Kanter and Allison Fine</b>, <i>The Smart Nonprofit</i> and <a href="https://candid.org/blogs/nonprofit-ai-tools-benefits-risks-human-first-ai-adoption-strategy/">"Beyond efficiency"</a> (Candid, Feb. 2024). <span class="dom">candid.org</span></li>
+<li><b>Common Sense Media</b>, <a href="https://www.commonsensemedia.org/press-releases/nearly-3-in-4-teens-have-used-ai-companions-new-national-survey-finds">teens and AI companions</a>: 72% of teens had used one (2025 survey). <span class="dom">commonsensemedia.org</span></li>
+</ul>
+</div>
+<div class="col">
+<h3>Human services and government</h3>
+<ul>
+<li><b>Code for America</b>, Amanda Renteria, CEO. <a href="https://codeforamerica.org/programs/artificial-intelligence/">AI program</a> on benefits access and caseworker load. <span class="dom">codeforamerica.org</span></li>
+<li><b>Center for Civic Futures</b>, Justin Brown and Cass Madison. <a href="https://www.centerforcivicfutures.org/resources/gov-tech-today-podcast-bridging-the-gap-with-ai-in-government-services-in-gov-tech-today">AI in government services</a> (podcast). <span class="dom">centerforcivicfutures.org</span></li>
+<li><b>Lauri Goldkind</b>, Fordham. <a href="https://www.fordham.edu/graduate-school-of-social-service/video--the-future-of-ai-is-inclusive/">The Future of AI Is Inclusive</a> (video). <span class="dom">fordham.edu</span></li>
+</ul>
+</div>
+<div class="col">
+<h3>The critical lens</h3>
+<ul>
+<li><b>Virginia Eubanks</b>, <i>Automating Inequality</i> and <a href="https://virginia-eubanks.com/articles/">articles</a> on welfare, child abuse prediction and caregiver surveillance. <span class="dom">virginia-eubanks.com</span></li>
+<li><b>Stevie Glaberson</b>, Georgetown Law Center on Privacy &amp; Technology. <a href="https://www.childrensrights.org/news-voices/data-and-automation-in-the-family-policing-system-a-primer">Data and automation in the family policing system</a>. <span class="dom">childrensrights.org</span></li>
+</ul>
+</div>
+<div class="col">
+<h3>Children's rights and state policy</h3>
+<ul>
+<li><b>UNICEF Innocenti</b>, Steven Vosloo. <a href="https://www.unicef.org/innocenti/media/11991/file/UNICEF%20Innocenti%20Guidance%20on%20AI%20and%20Children%203%202025.pdf">Guidance on AI and Children 3.0</a> (Dec. 2025). <span class="dom">unicef.org</span></li>
+<li><b>NCSL</b>, <a href="https://www.ncsl.org/financial-services/artificial-intelligence-legislation-database">AI Legislation Database</a>: state bills on government use, health and more, updated monthly. <span class="dom">ncsl.org</span></li>
+</ul>
+</div>
+</div>
+</section>
+<footer class="foot">
+<p>Muse availability per Meta's announcement. Poll figures per the cited releases. All links checked October 8, 2026.</p>
+</footer>
+</main>
+</body>
+</html>
